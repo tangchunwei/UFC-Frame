@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用户列表</title>
+	<style>
+		table {
+			font-size: 16px;
+			color: #666;
+			width: 1200px;
+			margin: 0px auto;
+			text-align: center;
+			border-collapse: collapse;
+		}
+
+		th,td {
+			border: 1px solid #999;
+		}
+
+		tr:nth-child(even) {
+			background-color: #FFFFCC;
+		}
+	</style>
+</head>
+<body>
+	<{$num}>
+	<a href="addbook.html">添加用户</a> 
+	<hr>
+	<table>
+		<caption><h2>用户列表</h2></caption>
+		<tr>
+			<th>编号</th>
+			<th>用户名</th>
+			<th>用户类型</th>
+			<th>用户状态</th>
+			<th>添加时间</th>
+		</tr>
+	
+		<!-- 需要进行for循环，遍历取出数据 -->
+		<!-- Smarty 中提供的 foreach遍历 
+			
+			 foreach  from=数组  key=变量(键)  item=变量(值)  
+
+
+			 /foreach
+
+		-->
+
+		<{foreach from=$data key=$key item=$v}>    <!-- $v 是一个一维数组，使用$v 获取一维数组的每个值 -->
+		<tr>  
+			<td><{$v.id}></td>                     <!-- $v.id 表示访问数组中 key为id的这个元素(id为关联数组的key) -->
+			<td><{$v.username}></td>
+			<td><{$v.user_type}></td>
+			<td><{$v.user_state}></td>
+			<td><{$v.add_time}></td>
+		</tr>
+		<{/foreach}>
+		
+	</table>
+</body>
+</html>
